@@ -192,6 +192,7 @@ class Program
             {
                 Console.WriteLine("8) Yeni Kullanici Ekle");
                 Console.WriteLine("9) Raporlar ve Istatistikler");
+                Console.WriteLine("10) Stokta Olmayan Kitaplar");
             }
 
             Console.WriteLine("0) Cikis Yap");
@@ -234,6 +235,10 @@ class Program
             {
                 RaporlariGoster();
             }
+            else if (secim == "10" && kullanici.Rol == "Yonetici")
+{
+    StoktaOlmayanKitaplar();
+}
             else if (secim == "0")
             {
                 Console.WriteLine("Cikis yapildi.");
@@ -672,4 +677,41 @@ class Program
         if (gecikmisSayisi == 0) Console.WriteLine("Gecikmis iade yok.");
         else Console.WriteLine("Toplam gecikmis: " + gecikmisSayisi);
     }
+    static void StoktaOlmayanKitaplar()
+{
+    Console.WriteLine();
+    Console.WriteLine("--- STOKTA OLMAYAN KITAPLAR ---");
+
+    if (!File.Exists(kitapDosyasi))
+    {
+        Console.WriteLine("Kitap dosyasi bulunamadi.");
+        return;
+    }
+
+    string[] satirlar = File.ReadAllLines(kitapDosyasi);
+
+    int bulunan = 0;
+
+    for (int i = 0; i < satirlar.Length; i++)
+    {
+        if (satirlar[i].Trim() == "") continue;
+
+        Kitap k = Kitap.SatirdanOku(satirlar[i]);
+
+        if (k.Adet == 0)
+        {
+            Console.WriteLine(
+                "ID: " + k.Id +
+                " | " + k.Baslik +
+                " | " + k.Yazar);
+
+            bulunan = bulunan + 1;
+        }
+    }
+
+    if (bulunan == 0)
+    {
+        Console.WriteLine("Stokta biten kitap yok.");
+    }
+}
 }
