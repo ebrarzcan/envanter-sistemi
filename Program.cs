@@ -77,7 +77,7 @@ class Program
         return sb.ToString();
     }
 
-    // ========== GIRIS ==========
+    // Kullanıcı girişi
 
     static Kullanici GirisYap()
     {
@@ -109,11 +109,11 @@ class Program
         return null;
     }
 
-    // ========== KAYIT OL (SELF-REGISTRATION) ==========
+    // Kullanıcı kaydı oluşturma
 
     // Yeni ogrenci kendi kendine hesap acabilir.
-    // Guvenlik icin sadece "Ogrenci" rolu verilir; Yonetici/Personel
-    // hesaplari yalnizca mevcut bir yonetici tarafindan olusturulabilir.
+    // Guvenlik icin sadece "Ogrenci" rolu verilir.
+    // Yonetici/Personel hesaplari yalnizca mevcut bir yonetici tarafindan olusturulabilir.
     static void KendiKendineKayitOl()
     {
         Console.WriteLine();
@@ -141,7 +141,7 @@ class Program
             return;
         }
 
-        // Bu kullanici adi zaten var mi?
+        // Var olan kullanıcı kontrolü:
         if (File.Exists(kullaniciDosyasi))
         {
             string[] mevcut = File.ReadAllLines(kullaniciDosyasi);
@@ -167,7 +167,7 @@ class Program
         Console.WriteLine("Kayit basarili! Artik 'Giris Yap' secenegi ile sisteme girebilirsiniz.");
     }
 
-    // ========== ANA MENU ==========
+    // Ana menü ekranı
 
     static void AnaMenu(Kullanici kullanici)
     {
@@ -251,7 +251,7 @@ class Program
         }
     }
 
-    // ========== BAGLI LISTE & SIRALAMA ==========
+    // Bağlı liste ve sıralama kullanımı
 
     // Dosyadaki tum kitaplari bagli listeye yukler
     static KitapBagliListe KitaplariYukle()
@@ -268,7 +268,7 @@ class Program
         return liste;
     }
 
-    // Akademik gereklilik: Bubble Sort ile kitaplari basliga gore alfabetik siralar
+    // Bubble Sort ile kitaplari basliga gore alfabetik siralama
     static void KitapBubbleSort(Kitap[] dizi)
     {
         int n = dizi.Length;
@@ -287,7 +287,7 @@ class Program
         }
     }
 
-    // ========== KITAP ISLEMLERI ==========
+    // Kitap işlemleri
 
     static void KitaplariListele()
     {
@@ -407,7 +407,7 @@ class Program
         else Console.WriteLine("Kitap bulunamadi.");
     }
 
-    // ========== ODUNC ISLEMLERI ==========
+    // Ödünç alma—verme sistemi
 
     static int SonrakiOduncId()
     {
@@ -564,7 +564,7 @@ class Program
         if (sayac == 0) Console.WriteLine("Size ait odunc kaydi yok.");
     }
 
-    // ========== KULLANICI EKLEME ==========
+    // Kullanıcı işlemleri
 
     static void KullaniciEkle()
     {
@@ -610,14 +610,14 @@ class Program
         Console.WriteLine("Kullanici eklendi.");
     }
 
-    // ========== RAPORLAR (WP6) ==========
+    // Raporlama
 
     static void RaporlariGoster()
     {
         Console.WriteLine();
         Console.WriteLine("===== RAPORLAR VE ISTATISTIKLER =====");
 
-        // --- Envanter Ozeti ---
+        // Envanter Ozeti
         int kitapSayisi = 0;
         int toplamStok = 0;
         if (File.Exists(kitapDosyasi))
@@ -648,7 +648,7 @@ class Program
         Console.WriteLine("Toplam Stok (kopya)   : " + toplamStok);
         Console.WriteLine("Toplam Kullanici      : " + kullaniciSayisi);
 
-        // --- Gecikmis Iadeler (15 gunu asanlar) ---
+        // Gecikmis Iadeler (15 gunu asanlar) 
         Console.WriteLine();
         Console.WriteLine("--- Gecikmis Iadeler ---");
         int gecikmisSayisi = 0;
