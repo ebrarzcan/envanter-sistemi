@@ -27,7 +27,7 @@ public class Kitap
     }
 }
 
-// Kullanici modeli (sifre duz metin - akademik projemizde basit tutuldu)
+// Kullanici modeli
 public class Kullanici
 {
     public string KullaniciAdi;
