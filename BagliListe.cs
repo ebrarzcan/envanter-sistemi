@@ -1,6 +1,4 @@
 namespace OgrenciKutuphaneSistemi;
-
-// Akademik gereklilik: manuel olarak yazilmis tek yonlu bagli liste.
 // Kitaplari bellekte tutmak icin kullaniyoruz.
 
 public class KitapDugum
